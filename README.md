@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# art-walk
+
+
+## APIs
+* Art Institute of Chicago API: https://api.artic.edu/docs/#introduction
+
+
 ## Getting Started
 
 First, run the development server:
