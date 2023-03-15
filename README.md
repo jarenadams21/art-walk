@@ -17,8 +17,7 @@ Find art that speaks to you!
 * NextJS (React)
 * Mantine
 
-** Instructions
-
+<br>
 
 ## Getting Started
 
