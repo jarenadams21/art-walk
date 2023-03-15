@@ -4,9 +4,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Find art that speaks to you!
 
 ## Instructions
-i. Open terminal and navigate to project directory and type the following commands,
-ii. yarn
-ii. yarn dev
+* i. Open terminal and navigate to project directory and type the following commands,
+* ii. yarn
+* ii. yarn dev
 
 
 ## APIs
