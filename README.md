@@ -3,8 +3,21 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 # art-walk
 Find art that speaks to you!
 
+## Instructions
+i. Open terminal and navigate to project directory and type the following commands,
+ii. yarn
+ii. yarn dev
+
+
 ## APIs
 * Art Institute of Chicago API: https://api.artic.edu/docs/#introduction
+
+## Technologies
+* Typescript
+* NextJS (React)
+* Mantine
+
+** Instructions
 
 
 ## Getting Started
