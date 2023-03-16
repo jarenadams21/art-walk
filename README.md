@@ -6,7 +6,7 @@ Find art that speaks to you!
 ## Instructions
 * i. Open terminal and navigate to project directory and type the following commands,
 * ii. yarn
-* ii. yarn dev
+* iii. yarn dev
 
 
 ## APIs
