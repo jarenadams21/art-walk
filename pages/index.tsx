@@ -51,7 +51,6 @@ export default function Home() {
         },
         body: JSON.stringify( {link: api_link})
       });
-      //
       const data = await response.json();
       
       // Validate API call was succesfully made.

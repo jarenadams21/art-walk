@@ -11,9 +11,13 @@ export default async function(req, res) {
       },
     }
     );
-    console.log('interlinked')
+    console.log('interLINKed')
     // List of results based on query search
     const response = await inter.json()
+    console.log(response)
+    if(response.data.length < 1)
+      res.status(404).json({message: 'Could not find art with this attribute, sorry!'})
+
     // api_link to the best matching image to query
     const bestResult = response.data[0].api_link
     bestResult.replace(/\\/g, '')
