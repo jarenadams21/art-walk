@@ -17,6 +17,10 @@ Find art that speaks to you!
 * NextJS (React)
 * Mantine
 
+## Helpful Tutorials
+* Firebase Login/Logout Auth Setup: https://www.youtube.com/watch?v=kuVUUo5GZag
+
+
 <br>
 
 ## Getting Started

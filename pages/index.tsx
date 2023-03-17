@@ -4,6 +4,7 @@ import { Button, TextInput } from '@mantine/core';
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react';
+import Navbar from './components/Navbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -77,25 +78,36 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <Image fill src={walkImage} alt="n/a"></Image>
-        <div className={styles.center}>
+        <Navbar/>
+        <div className={styles.centralImageBox}>
+      {walkImage && 
+      <Image 
+      width={500}
+       height={500} 
+       src={walkImage} 
+       alt="n/a"     
+       >  
+       </Image>   
+      }
+      </div>
+       <div className={styles.userField}>
         <TextInput
-      placeholder="Example: Cats"
-      label="What are you looking for?"
-      description="(Enter an attribute of a piece you'd like to see)"
-      withAsterisk
-      value={imageSearch}
-      onChange={(event) => setImageSearch(event.currentTarget.value)}
+        placeholder="Example: Cats"
+        label="What are you looking for?"
+        description="(Enter an attribute of a piece you'd like to see)"
+        withAsterisk
+        value={imageSearch}
+        onChange={(event) => setImageSearch(event.currentTarget.value)}
     />
-        <Button 
+        <Button
         color="teal"
         onClick={grabArtLink}
+        className={styles.walkButton}
         >
           Walk
         </Button>
-          
         </div>
-
+          
         <div className={styles.grid}>
          
         </div>
