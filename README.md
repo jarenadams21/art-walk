@@ -3,6 +3,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 # art-walk
 Find art that speaks to you!
 
+## Todo
+* Firebase auth
+* Handle user input error cases such as no input walks
+
 ## Instructions
 * i. Open terminal and navigate to project directory and type the following commands,
 * ii. yarn
