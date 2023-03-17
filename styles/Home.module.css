@@ -14,11 +14,27 @@
   display: flex;
   flex-direction: row;
   background-color: aquamarine;
-  justify-content: right;
+  justify-content: space-between;
 }
 
-.navigation p {
+.navOptions {
+  display: flex;
+  flex-direction: row;
   margin-right: 2rem;
+  justify-content: space-between;
+  width: 25%;
+
+}
+
+.navBranding {
+  margin-left: 2rem;
+}
+
+/* Headers */
+.headers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Central Image Box */

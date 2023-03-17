@@ -4,9 +4,19 @@ export default function Navbar() {
 
     return (
         <div className={styles.navigation}>
-        <p>Item1</p>
-        <p>Item2</p>
-        <p>Item3</p>
+
+        <div className={styles.navBranding}>
+        <h3>Art Walk</h3>
+        </div>
+
+        <div className={styles.navOptions}>
+        <p>Profile</p>
+        <p>Friends</p>
+        <p>Explore</p>
+        <p>Generate</p>
+        <p>About</p>
+        </div>
+
         </div>
     )
 }

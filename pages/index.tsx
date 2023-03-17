@@ -12,6 +12,8 @@ export default function Home() {
 
   const [walkImage, setWalkImage] = useState('')
   const [imageSearch, setImageSearch] = useState('')
+  const [imageTitle, setImageTitle] = useState('')
+  const [imageCredits, setImageCredits] = useState('')
 
   // Grab Image API Link from Search Query
   const grabArtLink = async () => {
@@ -61,6 +63,8 @@ export default function Home() {
   
         console.log(data)
         setWalkImage(data.result)
+        setImageTitle(data.title)
+        setImageCredits(data.credits)
   
         } catch (error) {
   
@@ -79,10 +83,14 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Navbar/>
+        <div className={styles.headers}>
+        {imageTitle && <h1>{imageTitle}</h1>}
+        {imageCredits && <h2>{imageCredits}</h2>}
+        </div>
         <div className={styles.centralImageBox}>
       {walkImage && 
       <Image 
-      width={500}
+       width={500}
        height={500} 
        src={walkImage} 
        alt="n/a"     
