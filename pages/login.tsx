@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 const Login = () => {
+    {console.log(process.env.FIREBASE_API_KEY)}
   const { user, login } = useAuth()
   const router = useRouter()
   const [data, setData] = useState({
