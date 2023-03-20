@@ -6,9 +6,11 @@ Find art that speaks to you!
 ## Todo
 * Firebase auth [DONE]
 * Handle user input error cases such as no input walks
+    Handle this with an error popup common component to echo dynamic messages to different pages
 * Style navigation and UI for cleaner feel
 * Profile page
 * OpenAI recommender model
+* Save art into collections page with cards
 
 ## Instructions
 * i. Open terminal and navigate to project directory and type the following commands,

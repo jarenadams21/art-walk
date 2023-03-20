@@ -1,75 +1,72 @@
 import { useAuth } from '@/context/AuthContext'
+import { Box, Button, Checkbox, Group, TextInput } from '@mantine/core'
+import { useForm } from '@mantine/form'
 import Router, { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import styles from '@/styles/Home.module.css'
+import {HiCursorArrowRipple} from 'react-icons/hi2'
 
 const Login = () => {
-    {console.log(process.env.FIREBASE_API_KEY)}
   const { user, login } = useAuth()
   const router = useRouter()
-  const [data, setData] = useState({
-    email: '',
-    password: '',
-  })
 
-  const handleLogin = async (e: any) => {
-    e.preventDefault()
-    console.log(user)
+  const handleLogin = async (email: string, password: string) => {
     try {
         
-        await login(data.email, data.password)
+        await login(email, password)
         router.push('/')
     } catch (err) {
         console.log(err)
     }
   }
 
-  return (
-    <div
-      style={{
-        width: '40%',
-        margin: 'auto',
-      }}
-    >
-      <h1 className="text-center my-3 ">Login</h1>
-      <Form onSubmit={handleLogin}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            onChange={(e: any) =>
-              setData({
-                ...data,
-                email: e.target.value,
-              })
-            }
-            value={data.email}
-            required
-            type="email"
-            placeholder="Enter email"
-          />
-        </Form.Group>
+  const form = useForm({
+    initialValues: {
+      email: '',
+      password: '',
+      termsOfService: false,
+    },
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            onChange={(e: any) =>
-              setData({
-                ...data,
-                password: e.target.value,
-              })
-            }
-            value={data.password}
-            required
-            type="password"
-            placeholder="Password"
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
-      </Form>
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+    },
+  });
+
+  return (
+    <>
+    <h1 className={styles.userAuthHeader}>Login</h1>
+    <Box maw={300} mx="auto" my='4'>
+      <form onSubmit={form.onSubmit((values) => {handleLogin(values.email, values.password)})}>
+        <TextInput
+          withAsterisk
+          label="Email"
+          placeholder="your@email.com"
+          {...form.getInputProps('email')}
+        />
+        <TextInput
+          withAsterisk
+          label="Password (6 character minimum)"
+          placeholder="123456 (not ideal)"
+          {...form.getInputProps('password')}
+        />
+
+        <Checkbox
+          mt="md"
+          label="I agree to sell my privacy"
+          {...form.getInputProps('termsOfService', { type: 'checkbox' })}
+        />
+
+        <Group position="right" mt="md">
+          <Button type="submit">Login</Button>
+        </Group>
+      </form>
+    </Box>
+    <div className={styles.userAuthSwitch}>
+    <h2>Don't have a login?</h2>
+    <HiCursorArrowRipple onClick={() => router.push('/signup')} className={styles.iconClick} size={30}/>
     </div>
-  )
+    </>
+  );
 }
 
 export default Login

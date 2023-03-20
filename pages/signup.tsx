@@ -1,21 +1,22 @@
 import { useAuth } from '@/context/AuthContext'
+import { Box, Button, Checkbox, Group, TextInput } from '@mantine/core'
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { HiCursorArrowRipple } from 'react-icons/hi2'
+import styles from '@/styles/Home.module.css'
+import { useForm } from '@mantine/form'
+import { useRouter } from 'next/router'
 
 const Signup = () => {
   const { user, signup } = useAuth()
-  console.log(user)
   const [data, setData] = useState({
     email: '',
     password: '',
   })
+  const router = useRouter()
 
-  const handleSignup = async (e: any) => {
-    e.preventDefault()
-
-    try {
-        
-        await signup(data.email, data.password)
+  const handleSignup = async (email: string, password: string) => {
+    try {   
+        await signup(email, password)
     } catch (err) {
         console.log(err)
     }
@@ -23,53 +24,47 @@ const Signup = () => {
     console.log(data)
   }
 
+  const form = useForm({
+    initialValues: {
+      email: '',
+      password: '',
+      termsOfService: false,
+    },
+
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+    },
+  });
+
   return (
-    <div
-      style={{
-        width: '40%',
-        margin: 'auto',
-      }}
-    >
-      <h1 className="text-center my-3 ">Signup</h1>
-      <Form onSubmit={handleSignup}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            required
-            onChange={(e: any) =>
-              setData({
-                ...data,
-                email: e.target.value,
-              })
-            }
-            value={data.email}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            required
-            onChange={(e: any) =>
-              setData({
-                ...data,
-                password: e.target.value,
-              })
-            }
-            value={data.password}
-          />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Signup
-        </Button>
-      </Form>
+    <>
+    <h1 className={styles.userAuthHeader}>Signup</h1>
+    <Box maw={300} mx="auto" my='4'>
+      <form onSubmit={form.onSubmit((values) => 
+        {handleSignup(values.email, values.password)})}>
+        <TextInput
+          withAsterisk
+          label="Email"
+          placeholder="your@email.com"
+          {...form.getInputProps('email')}
+        />
+        <TextInput
+          withAsterisk
+          label="Password (6 character minimum)"
+          placeholder="123456 (not ideal)"
+          {...form.getInputProps('password')}
+        />
+        <Group position="right" mt="md">
+          <Button type="submit">Signup</Button>
+        </Group>
+      </form>
+    </Box>
+    <div className={styles.userAuthSwitch}>
+    <h2>Head back to login</h2>
+    <HiCursorArrowRipple onClick={() => router.push('/login')} className={styles.iconClick} size={30}/>
     </div>
-  )
+    </>
+  );
 }
 
 export default Signup

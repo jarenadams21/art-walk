@@ -56,3 +56,26 @@
   margin: 1rem 0;
   width: 20%;
 }
+
+/* Login & Signup */
+.userAuthHeader {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.userAuthSwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconClick {
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+.iconClick:hover {
+  border: solid forestgreen;
+  border-radius: 2rem;
+}
