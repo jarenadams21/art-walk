@@ -4,8 +4,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Find art that speaks to you!
 
 ## Todo
-* Firebase auth
+* Firebase auth [DONE]
 * Handle user input error cases such as no input walks
+* Style navigation and UI for cleaner feel
+* Profile page
+* OpenAI recommender model
 
 ## Instructions
 * i. Open terminal and navigate to project directory and type the following commands,
