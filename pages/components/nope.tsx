@@ -1,4 +1,5 @@
-import { Image } from "@mantine/core";
+import Image from 'next/image';
+import nope from '../media/gifs/horseridinggif.gif'
 
 const nopeSwitch = () => {
 

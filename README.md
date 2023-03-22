@@ -13,6 +13,8 @@ Find art that speaks to you!
 * OpenAI recommender model
 * Save art into collections page with cards
 
+
+
 ## Instructions
 * i. Open terminal and navigate to project directory and type the following commands,
 * ii. yarn
