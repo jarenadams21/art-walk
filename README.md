@@ -8,6 +8,7 @@ Find art that speaks to you!
 * Handle user input error cases such as no input walks
     Handle this with an error popup common component to echo dynamic messages to different pages
 * Style navigation and UI for cleaner feel
+* nopeSwitch blade implementation <>
 * Profile page
 * OpenAI recommender model
 * Save art into collections page with cards

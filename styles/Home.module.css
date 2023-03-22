@@ -1,3 +1,4 @@
+import 'react-bootstrap'
 .main {
   /*
   display: flex;
@@ -31,6 +32,17 @@
   margin-left: 2rem;
 }
 
+.mainNavbar {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainNavbar h1 {
+  margin-left: 16px;
+}
+
 /* Headers */
 .headers {
   display: flex;
@@ -62,6 +74,35 @@
   margin-top: 6rem;
   display: flex;
   justify-content: center;
+  
+}
+
+.loginPageStyles {
+  animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+}
+
+.signupPageStyles {
+  animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
 }
 
 .userAuthSwitch {

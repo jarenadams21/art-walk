@@ -3,20 +3,18 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 import Link from 'next/link'
 import { useAuth } from '@/context/AuthContext'
 import { useRouter } from 'next/router'
+import styles from '@/styles/Home.module.css'
 
 const NavbarComp = () => {
     const {user, logout} = useAuth()
     const router = useRouter()
-
-  return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Link href="/" passHref>
-          <Navbar.Brand>NextJS Firebase Auth</Navbar.Brand>
-        </Link>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+  return (   
           <Nav className="me-auto"> 
+          <div className={styles.mainNavbar}>
+                <h1>
+                  ArtWalk
+                </h1>
+         
             {user ? (
                <Nav.Link
                onClick={ () => {
@@ -25,8 +23,7 @@ const NavbarComp = () => {
                }}
                >
                    Logout
-                </Nav.Link>
-             
+                </Nav.Link>       
             ) : (
             <>
                 <Link href="/signup" passHref>
@@ -37,10 +34,8 @@ const NavbarComp = () => {
                 </Link>   
                 </>
                 )}
+                 </div>
           </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
   )
 }
 

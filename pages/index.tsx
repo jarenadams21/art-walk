@@ -81,8 +81,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className={styles.welcomeBackNav}>
+      <Navbar/>
+      </div>
       <main className={styles.main}>
-        <Navbar/>
         <div className={styles.headers}>
         {imageTitle && <h1>{imageTitle}</h1>}
         {imageCredits && <h2>{imageCredits}</h2>}

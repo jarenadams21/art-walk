@@ -37,7 +37,7 @@ const Signup = () => {
   });
 
   return (
-    <>
+    <div className={styles.signupPageStyles}>
     <h1 className={styles.userAuthHeader}>Signup</h1>
     <Box maw={300} mx="auto" my='4'>
       <form onSubmit={form.onSubmit((values) => 
@@ -63,7 +63,7 @@ const Signup = () => {
     <h2>Head back to login</h2>
     <HiCursorArrowRipple onClick={() => router.push('/login')} className={styles.iconClick} size={30}/>
     </div>
-    </>
+    </div>
   );
 }
 

@@ -5,6 +5,8 @@ import Router, { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import styles from '@/styles/Home.module.css'
 import {HiCursorArrowRipple} from 'react-icons/hi2'
+import nope from '../media/gifs/horseridinggif.gif'
+import Image from 'next/image'
 
 const Login = () => {
   const { user, login } = useAuth()
@@ -33,7 +35,8 @@ const Login = () => {
   });
 
   return (
-    <>
+    <div className={styles.loginPageStyles}>
+      <Image alt='nope' width={140} height={140} src={nope}/>
     <h1 className={styles.userAuthHeader}>Login</h1>
     <Box maw={300} mx="auto" my='4'>
       <form onSubmit={form.onSubmit((values) => {handleLogin(values.email, values.password)})}>
@@ -65,7 +68,7 @@ const Login = () => {
     <h2>Don't have a login?</h2>
     <HiCursorArrowRipple onClick={() => router.push('/signup')} className={styles.iconClick} size={30}/>
     </div>
-    </>
+    </div>
   );
 }
 
