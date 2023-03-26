@@ -7,14 +7,20 @@ Find art that speaks to you!
 * Firebase auth [DONE]
 * Handle user input error cases such as no input walks
     Handle this with an error popup common component to echo dynamic messages to different pages
-* Style navigation and UI for cleaner feel
+* --> Styling <--
 * nopeSwitch blade implementation <>
-* Profile page
 * OpenAI recommender model
 * Save art into collections page with cards
 * Non-existing display name & photo handling for profile page
 * log statement clearing
-* Navbar restyle
+* User Actions
+   i.  Like, Save, Unsave, Dislike
+   ii. Update Profile
+   iii. Friends & Chats
+   iv. Community Tab, Discussions, etc.
+   v. Upload
+* Admins (authorization management)
+    for special activities
 
 
 
