@@ -12,6 +12,9 @@ Find art that speaks to you!
 * Profile page
 * OpenAI recommender model
 * Save art into collections page with cards
+* Non-existing display name & photo handling for profile page
+* log statement clearing
+* Navbar restyle
 
 
 

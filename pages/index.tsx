@@ -5,6 +5,9 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react';
 import Navbar from './components/Navbar';
+import {HiOutlineSaveAs} from 'react-icons/hi'
+import {FcLikePlaceholder} from 'react-icons/fc'
+import {AiOutlineDislike} from 'react-icons/ai'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -85,21 +88,31 @@ export default function Home() {
       <Navbar/>
       </div>
       <main className={styles.main}>
-        <div className={styles.headers}>
-        {imageTitle && <h1>{imageTitle}</h1>}
-        {imageCredits && <h2>{imageCredits}</h2>}
-        </div>
+        <div className={styles.imageWalkBox}>
         <div className={styles.centralImageBox}>
       {walkImage && 
+      <>
+      
       <Image 
        width={500}
        height={500} 
        src={walkImage} 
        alt="n/a"     
        >  
-       </Image>   
-      }
-      </div>
+       </Image> 
+      <div className={styles.headers}>
+        {imageTitle && <h1>{imageTitle}</h1>}
+        {imageCredits && <h2>{imageCredits}</h2>}   
+        <div className={styles.imageActionStyles}>
+          <HiOutlineSaveAs size={40}/>
+          <FcLikePlaceholder size={40}/>
+          <AiOutlineDislike size={40}/>
+        </div>
+        </div>
+      </>
+}
+</div>
+</div>
        <div className={styles.userField}>
         <TextInput
         placeholder="Example: Cats"
