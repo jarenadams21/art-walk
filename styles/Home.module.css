@@ -151,3 +151,9 @@
   border: solid forestgreen;
   border-radius: 2rem;
 }
+
+/* Image Actions Modal */
+.imageActionsModal {
+  display: flex;
+  justify-content: space-evenly;
+}

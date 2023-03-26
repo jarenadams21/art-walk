@@ -21,6 +21,8 @@ Find art that speaks to you!
    v. Upload
 * Admins (authorization management)
     for special activities
+* Review Art Institute API for extracting info like techniques, themes, etc so users can add preference to themes/techniques
+    e.g., contemporary, surrealism, etc.
 
 
 

@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import {HiOutlineSaveAs} from 'react-icons/hi'
 import {FcLikePlaceholder} from 'react-icons/fc'
 import {AiOutlineDislike} from 'react-icons/ai'
+import RatingModal from './components/Rating';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -104,9 +105,14 @@ export default function Home() {
         {imageTitle && <h1>{imageTitle}</h1>}
         {imageCredits && <h2>{imageCredits}</h2>}   
         <div className={styles.imageActionStyles}>
+          <RatingModal children={
+          <>
           <HiOutlineSaveAs size={40}/>
           <FcLikePlaceholder size={40}/>
           <AiOutlineDislike size={40}/>
+          </>
+        }
+        />
         </div>
         </div>
       </>

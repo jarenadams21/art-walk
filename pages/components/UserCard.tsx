@@ -1,20 +1,14 @@
-import { Card, Group, Image, Text, Badge, Button } from "@mantine/core"
-import { getAuth, updateProfile } from "firebase/auth"
+import { Card, Group, TextInput, Loader, Image, Text, Badge, Button } from "@mantine/core"
+import { useDB } from "@/context/DBContext";
+import { useAuth } from "@/context/AuthContext";
+import { useState } from "react";
 
 const UserCard = () => {
 
-    const auth = getAuth()
-    const user = auth.currentUser
-    
-    const handleUpdates = async () => {
-       
-        if(user) {
-        updateProfile(user, {
-            displayName: 'jaren',
-            photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/226.png',
-        })
-    }
-    }
+    const { user } = useAuth()
+    const { changeName } = useDB()
+    const [isEditing, setIsEditing] = useState(false)
+    const [visibleName, setVisibleName] = useState('')
 
     return (
         <>
@@ -28,7 +22,21 @@ const UserCard = () => {
       </Card.Section>
 
       <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>{user.displayName}</Text>
+          { !isEditing ? (
+        <Text weight={500}>{user.displayName}</Text>) : (
+        <TextInput
+        placeholder={user.displayName}
+        rightSection={<Loader onClick={() => {
+            changeName(visibleName, '/profile')
+            setIsEditing(false)
+
+        }} color="teal" size="xs" variant="bars" />} 
+        
+        value={visibleName}
+        onChange={(e) => setVisibleName(e.target.value)}
+         />
+        )
+          }
         <Text weight={500}>{user.email}</Text>
         <Text weight={500}>{user.uid}</Text>
         <Badge color="pink" variant="light">
@@ -40,8 +48,15 @@ const UserCard = () => {
         Bio goes here
       </Text>
 
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Edit Profile
+      <Button
+       variant="light" 
+       color="blue" 
+       fullWidth 
+       mt="md" 
+       radius="md"
+       onClick={() => setIsEditing(!isEditing)}
+       >
+        {isEditing ? (<> Cancel </>) : (<> Edit Profile </>)}
       </Button>
     </Card>
         </>
