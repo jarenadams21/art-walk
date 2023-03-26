@@ -11,11 +11,28 @@ const NavbarComp = () => {
   return (   
           <Nav className="me-auto"> 
           <div className={styles.mainNavbar}>
-                <h1>
+                <Nav.Link
+                onClick={ () => {
+                  router.push("/")
+                }}
+                >
                   ArtWalk
-                </h1>
+                </Nav.Link>
          
             {user ? (
+              <>
+                  <Nav.Link
+                  onClick={ () => {
+                    router.push('/profile')
+                  }}
+                  >
+                    Profile
+                    </Nav.Link>
+                
+                  <Nav.Link>
+                    My Collection
+                    </Nav.Link>
+                
                <Nav.Link
                onClick={ () => {
                    logout()
@@ -23,7 +40,9 @@ const NavbarComp = () => {
                }}
                >
                    Logout
-                </Nav.Link>       
+                </Nav.Link>  
+                </>
+                     
             ) : (
             <>
                 <Link href="/signup" passHref>

@@ -36,7 +36,9 @@ const Login = () => {
 
   return (
     <div className={styles.loginPageStyles}>
-      <Image alt='nope' width={140} height={140} src={nope}/>
+      <div className={styles.aboveHeaderStyles}>
+      <Image alt='nope' width={320} height={240} src={nope}/>
+      </div>
     <h1 className={styles.userAuthHeader}>Login</h1>
     <Box maw={300} mx="auto" my='4'>
       <form onSubmit={form.onSubmit((values) => {handleLogin(values.email, values.password)})}>

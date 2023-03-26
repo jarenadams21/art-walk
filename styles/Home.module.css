@@ -1,4 +1,3 @@
-import 'react-bootstrap'
 .main {
   /*
   display: flex;
@@ -9,6 +8,20 @@ import 'react-bootstrap'
   min-height: 100vh;
   */
 }
+
+/* Profile Page */
+.profilePageStyles {
+    display: flex;
+    flex-direction: column;
+}
+
+.profilePageStylesMain {
+  padding: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* Navigation */
 
 .navigation {
@@ -89,6 +102,16 @@ import 'react-bootstrap'
             100% {
                 opacity: 1;
             }
+}
+
+.aboveHeaderStyles {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.loginPageStyles Image {
+
 }
 
 .signupPageStyles {
