@@ -16,6 +16,7 @@ Find art that speaks to you!
 * User Actions
    i.  Like, Save, Unsave, Dislike
    ii. Update Profile
+        -> Users can't start name with the word 'new' for some reason [INVESTIGATE]
    iii. Friends & Chats
    iv. Community Tab, Discussions, etc.
    v. Upload
@@ -23,6 +24,15 @@ Find art that speaks to you!
     for special activities
 * Review Art Institute API for extracting info like techniques, themes, etc so users can add preference to themes/techniques
     e.g., contemporary, surrealism, etc.
+* Shortcut implementations (using Enter instead of clicking,etc.)
+
+## Database Rework
+    * Connect user auths to copy in database
+    * Add newly generated images to image db with a unique identifier
+        used for liking, saving, disliking, etc.
+        should be able to pull current likes, dislikes, and user state with regards to saving
+    * User action logging in db, used for time branch on profile
+    
 
 
 
