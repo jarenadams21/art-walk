@@ -25,14 +25,17 @@ Find art that speaks to you!
 * Review Art Institute API for extracting info like techniques, themes, etc so users can add preference to themes/techniques
     e.g., contemporary, surrealism, etc.
 * Shortcut implementations (using Enter instead of clicking,etc.)
+* Profile deisgn tools (wraps, etc.)
 
 ## Database Rework
-    * Connect user auths to copy in database
+    * Connect user auths to copy in database [DONE]
     * Add newly generated images to image db with a unique identifier
         used for liking, saving, disliking, etc.
-        should be able to pull current likes, dislikes, and user state with regards to saving
+        should be able to pull current likes, dislikes, and user state with regards to saving [DONE]
     * User action logging in db, used for time branch on profile
-    
+        Timestamping with Firebase
+    * Ensure all dynamic handling is migrated
+        i. Connect user profile updates to collection in db, not auth
 
 
 
