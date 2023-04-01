@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import { getAuth, updateProfile } from "firebase/auth"
 import router from 'next/router'
 import { db } from '@/config/firebase'
@@ -31,21 +31,46 @@ export const DBContextProvider = ({
         }
     }
 
-    const addToDB = async (collection_name: string, payload: any) => {
+    /*
+    const addToDB = async (collectionName: string, id:string, payload: any) => {
+        
+        console.log(collectionName)
+        if(collectionName.length > 0 && payload !== null) {
+        await addDoc(collection(db, collectionName), {
+            payload,
+        })
+        console.log("Doc written with ID:")
+    }
+    }
+    */
 
-        try {
-            const docRef = await addDoc(collection(db, collection_name), {
-               payload 
-            });
-            console.log("Doc written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding doc: ", e);
+    const handleDBUpdate = async (collectionName: string, id: string, payload: any) => {
+
+        console.log(collectionName)
+        console.log(id)
+        console.log(payload)
+        // checkExistence()
+        await setDoc(doc(db, collectionName, "" + id), {
+            payload,
+        }, { merge: true })
+
+    }
+
+    const handleDBRead = async (collectionName: string, id: string) => {
+
+        const snapshot = await getDoc(doc(db, collectionName, "" + id))
+        if (snapshot.exists()) {
+            console.log(snapshot.data())
+            return snapshot.data()
+        } else {
+            console.log("No such document...")
+            return null
         }
     }
 
     // User value is the user value we have in state from AuthContextProvider
     return (
-        <DBContext.Provider value={{ changeName, addToDB }}>
+        <DBContext.Provider value={{ changeName, handleDBUpdate, handleDBRead }}>
             {children}
         </DBContext.Provider>
     )

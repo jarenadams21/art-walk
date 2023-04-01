@@ -5,6 +5,7 @@ import { HiCursorArrowRipple } from 'react-icons/hi2'
 import styles from '@/styles/Home.module.css'
 import { useForm } from '@mantine/form'
 import { useRouter } from 'next/router'
+import { useDB } from '@/context/DBContext'
 
 const Signup = () => {
   const { user, signup } = useAuth()
@@ -13,12 +14,26 @@ const Signup = () => {
     password: '',
   })
   const router = useRouter()
+  const {handleDBUpdate} = useDB()
 
   const handleSignup = async (email: string, password: string) => {
     try {   
         await signup(email, password)
     } catch (err) {
         console.log(err)
+    }
+
+    try {
+      await handleDBUpdate("users", "" + user.uid, {
+        email,
+        password,
+        id: user.uid,
+        displayName: "",
+        works: [],
+        friends: []
+      })
+    } catch (err) {
+      console.log(err)
     }
 
     console.log(data)

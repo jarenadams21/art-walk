@@ -9,6 +9,10 @@ import {HiOutlineSaveAs} from 'react-icons/hi'
 import {FcLikePlaceholder} from 'react-icons/fc'
 import {AiOutlineDislike} from 'react-icons/ai'
 import RatingModal from './components/Rating';
+import { useDB } from '@/context/DBContext';
+import { useAuth } from '@/context/AuthContext';
+import { FirebaseError } from 'firebase/app';
+import { increment } from 'firebase/firestore';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +22,11 @@ export default function Home() {
   const [imageSearch, setImageSearch] = useState('')
   const [imageTitle, setImageTitle] = useState('')
   const [imageCredits, setImageCredits] = useState('')
+  const [imageUID, setImageUID] = useState('')
+  const [imgLikes, setImgLikes] = useState(0)
+  const [isLikeActive, setIsLikeActive] = useState(false)
+  const { addToDB, handleDBUpdate, handleDBRead } = useDB()
+  const { user } = useAuth()
 
   // Grab Image API Link from Search Query
   const grabArtLink = async () => {
@@ -69,6 +78,7 @@ export default function Home() {
         setWalkImage(data.result)
         setImageTitle(data.title)
         setImageCredits(data.credits)
+        setImageUID(data.uid)
   
         } catch (error) {
   
@@ -76,6 +86,42 @@ export default function Home() {
           
         }
   };
+
+  const handleImageAction = async (actionId: number) => {
+    switch (actionId) {
+      case 0: 
+        console.log("saving... " + imageUID)
+        break;
+      case 1:
+        console.log("liking... " + imageUID)
+        await handleDBUpdate("works", imageUID, {
+          likes: increment(1)
+        })
+        break;
+      case 2:
+        console.log("disliking... " + imageUID)
+        await handleDBUpdate("works", imageUID, {
+          dislikes: increment(1)
+        })
+        break;
+      default:
+          console.log("Invalid image action...")
+    }
+  }
+
+  const changeActivityState = async (active: boolean) => {
+
+    console.log(active)
+    if(!active) {
+    const { payload } = await handleDBRead("works", imageUID)
+        setImgLikes(payload.likes)
+        console.log(payload.likes)
+        setIsLikeActive(true)
+    }
+    else {
+      setIsLikeActive(false)
+    }
+  }
 
   return (
     <>
@@ -106,11 +152,39 @@ export default function Home() {
         {imageCredits && <h2>{imageCredits}</h2>}   
         <div className={styles.imageActionStyles}>
           <RatingModal children={
-          <>
-          <HiOutlineSaveAs size={40}/>
-          <FcLikePlaceholder size={40}/>
-          <AiOutlineDislike size={40}/>
+         <>
+         <div className={styles.actionAndInfo}>
+         <HiOutlineSaveAs onClick={ async () => {
+           handleImageAction(0)
+         }} size={40}/>
+         </div>
+         <div className={styles.actionAndInfo}>
+         <FcLikePlaceholder onClick={ async () => {
+           handleImageAction(1)
+         }} size={40}/>
+         { isLikeActive ? (
+           <>
+           <h2>{imgLikes}</h2>
+         <Button
+          onClick={ async () => changeActivityState(isLikeActive)}>
+            Reveal
+         </Button>
+         </>
+         ) : (
+           <>
+           <Button
+          onClick={ async () => changeActivityState(isLikeActive)}>
+            Reveal
+         </Button>
           </>
+          )}
+         </div>
+         <div className={styles.actionAndInfo}>
+         <AiOutlineDislike onClick={ async () => {
+           handleImageAction(2)
+         }}size={40}/>
+         </div>
+         </>
         }
         />
         </div>
@@ -138,6 +212,7 @@ export default function Home() {
         </div>
           
         <div className={styles.grid}>
+
          
         </div>
       </main>
