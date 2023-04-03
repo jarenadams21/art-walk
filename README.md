@@ -28,10 +28,11 @@ Find art that speaks to you!
 * Profile deisgn tools (wraps, etc.)
 * useEffect on database update components
     e.g., ratings modal so that it refreshes after a user like
-        ratings modal should only allow one-five unique actions for a single user
+        ratings modal
 
 * ImageActionBundle component to simplify user activity modals
 * Unique user indications. Allow infinite likes and dislikes, etc but maintain # of unique users who have done the action
+* --> Unique collection saves <--
 
 ## Database Rework
     * Connect user auths to copy in database [DONE]

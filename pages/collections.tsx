@@ -1,6 +1,9 @@
 import NavbarComp from "./components/Navbar";
+import { useDB } from "@/context/DBContext";
 
 const collections = () => {
+
+    const { handleDBRead } = useDB()
 
     return (
         <div>
