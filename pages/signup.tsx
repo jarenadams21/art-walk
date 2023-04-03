@@ -24,7 +24,7 @@ const Signup = () => {
     }
 
     try {
-      await handleDBUpdate("users", "" + user.uid, {
+      await handleDBUpdate("users", "" + email, {
         email,
         password,
         id: user.uid,

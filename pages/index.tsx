@@ -24,7 +24,9 @@ export default function Home() {
   const [imageCredits, setImageCredits] = useState('')
   const [imageUID, setImageUID] = useState('')
   const [imgLikes, setImgLikes] = useState(0)
+  const [imgDislikes, setImgDislikes] = useState(0)
   const [isLikeActive, setIsLikeActive] = useState(false)
+  const [isDislikeActive, setIsDislikeActive] = useState(false)
   const { addToDB, handleDBUpdate, handleDBRead } = useDB()
   const { user } = useAuth()
 
@@ -91,6 +93,13 @@ export default function Home() {
     switch (actionId) {
       case 0: 
         console.log("saving... " + imageUID)
+        console.log("user: " + user.uid)
+        const { payload } = await handleDBRead("users", user.email)
+        const userWorks = payload.works
+        userWorks.push(imageUID)
+        await handleDBUpdate("users", user.email, {
+          works: userWorks,
+        })
         break;
       case 1:
         console.log("liking... " + imageUID)
@@ -120,6 +129,20 @@ export default function Home() {
     }
     else {
       setIsLikeActive(false)
+    }
+  }
+
+  const changeDislikeActivityState = async (active: boolean) => {
+
+    console.log(active)
+    if(!active) {
+    const { payload } = await handleDBRead("works", imageUID)
+        setImgDislikes(payload.dislikes)
+        console.log(payload.likes)
+        setIsDislikeActive(true)
+    }
+    else {
+      setIsDislikeActive(false)
     }
   }
 
@@ -183,6 +206,22 @@ export default function Home() {
          <AiOutlineDislike onClick={ async () => {
            handleImageAction(2)
          }}size={40}/>
+         { isDislikeActive ? (
+           <>
+           <h2>{imgDislikes}</h2>
+         <Button
+          onClick={ async () => changeDislikeActivityState(isDislikeActive)}>
+            Reveal
+         </Button>
+         </>
+         ) : (
+           <>
+           <Button
+          onClick={ async () => changeDislikeActivityState(isDislikeActive)}>
+            Reveal
+         </Button>
+          </>
+          )}
          </div>
          </>
         }

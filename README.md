@@ -26,6 +26,12 @@ Find art that speaks to you!
     e.g., contemporary, surrealism, etc.
 * Shortcut implementations (using Enter instead of clicking,etc.)
 * Profile deisgn tools (wraps, etc.)
+* useEffect on database update components
+    e.g., ratings modal so that it refreshes after a user like
+        ratings modal should only allow one-five unique actions for a single user
+
+* ImageActionBundle component to simplify user activity modals
+* Unique user indications. Allow infinite likes and dislikes, etc but maintain # of unique users who have done the action
 
 ## Database Rework
     * Connect user auths to copy in database [DONE]

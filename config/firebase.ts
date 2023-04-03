@@ -8,7 +8,7 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
- NOT FOR YOU!
+  naur
 };
 
 // Initialize Firebase & Firestore

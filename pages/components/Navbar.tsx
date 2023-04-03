@@ -29,7 +29,11 @@ const NavbarComp = () => {
                     Profile
                     </Nav.Link>
                 
-                  <Nav.Link>
+                  <Nav.Link
+                  onClick={ () => {
+                    router.push('/collections')
+                  }}
+                  >
                     My Collection
                     </Nav.Link>
                 
