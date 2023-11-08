@@ -1,15 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 # art-walk
-Find art that speaks to you!
+Find art that speaks to you
 
 ## Todo
 * Firebase auth [DONE]
 * Handle user input error cases such as no input walks
     Handle this with an error popup common component to echo dynamic messages to different pages
 * --> Styling <--
-* nopeSwitch blade implementation <>
-* OpenAI recommender model
+* Switch implementation <>
+* [i] recommender model
 * Save art into collections page with cards
 * Non-existing display name & photo handling for profile page
 * log statement clearing
@@ -20,9 +20,8 @@ Find art that speaks to you!
    iii. Friends & Chats
    iv. Community Tab, Discussions, etc.
    v. Upload
-* Admins (authorization management)
-    for special activities
-* Review Art Institute API for extracting info like techniques, themes, etc so users can add preference to themes/techniques
+* Admin
+* Review Art Institute API for info like techniques, themes, etc so users can add preference to themes/techniques
     e.g., contemporary, surrealism, etc.
 * Shortcut implementations (using Enter instead of clicking,etc.)
 * Profile deisgn tools (wraps, etc.)
@@ -31,7 +30,7 @@ Find art that speaks to you!
         ratings modal
 
 * ImageActionBundle component to simplify user activity modals
-* Unique user indications. Allow infinite likes and dislikes, etc but maintain # of unique users who have done the action
+* Unique user indications. Allow infinite ^ and v, etc but maintain # of unique people who have done the action
 * --> Unique collection saves <--
 
 ## Database Rework
@@ -42,7 +41,7 @@ Find art that speaks to you!
     * User action logging in db, used for time branch on profile
         Timestamping with Firebase
     * Ensure all dynamic handling is migrated
-        i. Connect user profile updates to collection in db, not auth
+        i. Connect someone's profile updates to collection in db, not auth
 
 
 
